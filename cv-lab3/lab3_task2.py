@@ -21,7 +21,7 @@ def count_less(arr, value):
 def find_min_max(image, lower_bound=-1, higher_bound=256):
     maximum = 0
     minimum = 255
-    for i in range(0, len(image), 2):
+    for i in range(0, len(image) - 1, 2):
         (c_min, c_max) = get_min_max(image, i)
         if maximum < c_max < higher_bound:
             maximum = c_max
@@ -49,6 +49,10 @@ def get_ab(image):
 
 fname = 'crayfish.jpg'
 # fname = 'office.jpg'
+# fname = 'train.jpg'
+# fname = 'terrain.jpg'
+# fname = 'map.jpg'
+# fname = 'branches.jpg'
 
 I = cv2.imread(fname, cv2.IMREAD_GRAYSCALE)
 
@@ -59,8 +63,8 @@ axes[0, 0].axis('off')
 axes[1, 0].hist(I.ravel(), 256, [0, 256])
 
 # find by hand
-# a = 100
-# b = 170
+#a = 100 # for crayfish
+#b = 170 # for crayfish
 
 # Extra - finds a & b automatically
 (a, b) = get_ab(I.ravel())
